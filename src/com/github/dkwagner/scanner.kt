@@ -9,7 +9,7 @@ class Scanner(val input: String) {
     /**
      * Scan the input string and convert it into tokens
      */
-    fun scan(): ArrayList<Token> {
+    fun scanV1(): ArrayList<Token> {
 
         var tokenizedLine = arrayListOf<Token>()
 

@@ -10,7 +10,7 @@ class Lexer {
         var tokenList = arrayListOf<ArrayList<Token>>()
         val lineList = Input().readFile(file)
 
-        lineList.forEach { tokenList.add(Scanner(it).scan()) }
+        lineList.forEach { tokenList.add(Scanner(it).scanV1()) }
 
         tokenList.forEach { println(it.toString()) }
     }
