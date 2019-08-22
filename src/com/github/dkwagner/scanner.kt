@@ -18,9 +18,9 @@ class Scanner(val input: String) {
         var chunk = ""
 
         while (currentIndex < input.length) {
-            var char = input.get(currentIndex)
+            var char = input[currentIndex]
             if (isWhitespace(char)) {  // Whitespace case
-                if (!chunk.equals("")) {
+                if (chunk != "") {
                     var token = chunk.getLexeme()
                     tokenizedLine.add(Token(lexeme = token, value = chunk))
                     chunk = ""  // set chunk back to empty

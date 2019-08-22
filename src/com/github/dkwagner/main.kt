@@ -7,7 +7,7 @@ import kotlin.system.measureTimeMillis
  */
 fun main() {
 
-    val input = "/Users/dwagr/workspace/polite-script/resources/test.ps"
+    val input = "resources/test.ps"
 
     val lexer  = Lexer()
 
