@@ -32,6 +32,7 @@ enum class Lexeme(){
     // Keywords
     KEYWORD_PLEASE,
     KEYWORD_DECLARE,
+
     END_OF_INPUT,
 
 
