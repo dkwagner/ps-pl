@@ -29,9 +29,11 @@ enum class Lexeme{
     OP_MINUS,  // minus (-)
     OP_MULT,  // times (*)
     OP_DIV,  // over (/)
+    OP_NEG,  // - followed by digit (-3)
 
     END_LINE,  // . (End of statement)
 
+    COMMENT,  // // a comment, disregard entire line
     TODO,
 
     END_OF_FILE

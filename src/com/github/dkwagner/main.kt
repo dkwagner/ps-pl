@@ -9,7 +9,7 @@ import kotlin.system.measureTimeMillis
  */
 fun main() {
 
-    val input = File("resources/test.ps").readText()
+    val input = File("resources/full_test.ps").readText()
 
     val executionTime = measureTimeMillis {
         Lexer(input).printTokens()
