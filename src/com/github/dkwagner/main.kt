@@ -1,5 +1,7 @@
 package com.github.dkwagner
 
+import com.github.dkwagner.lexer.Lexer
+import java.io.File
 import kotlin.system.measureTimeMillis
 
 /**
@@ -7,13 +9,12 @@ import kotlin.system.measureTimeMillis
  */
 fun main() {
 
-    val input = "resources/test.ps"
+    val input = File("resources/test.ps").readText()
 
-    val lexer  = Lexer()
-
-    val v1Time = measureTimeMillis {
-        lexer.lex(input)
+    val executionTime = measureTimeMillis {
+        Lexer(input).printTokens()
     }
 
-    println("Time in millis to lex = $v1Time")
+    println("Execution time: $executionTime")
+
 }
