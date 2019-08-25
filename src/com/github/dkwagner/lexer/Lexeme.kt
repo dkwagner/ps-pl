@@ -2,8 +2,6 @@ package com.github.dkwagner.lexer
 
 enum class Lexeme{
 
-    // Identifier [a-zA-z]+  We do not allow digits in
-    // an identifier as it is not conducive to the style of code we are going for.
     ID,
 
     // Literals
@@ -29,7 +27,6 @@ enum class Lexeme{
     OP_MINUS,  // minus (-)
     OP_MULT,  // times (*)
     OP_DIV,  // over (/)
-    OP_NEG,  // - followed by digit (-3)
 
     END_LINE,  // . (End of statement)
 

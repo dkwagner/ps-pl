@@ -3,12 +3,12 @@ package com.github.dkwagner.lexer
 import com.github.dkwagner.lexer.Lexeme.*
 import kotlin.system.exitProcess
 
-class Lexer(val input: String) {
-    var reservedPhrases = HashMap<Lexeme, String>()  // Hashmap of reserved keywords
-    var currentLine = 1  // Current line lexxing
-    var tokenStart = 0  // Start of current token
-    var position = 0  // current position of pointer
-    var currentChar: Char = input[0]  // Grab the first character to begin
+class Lexer(private val input: String) {
+    private var reservedPhrases = HashMap<Lexeme, String>()  // Hashmap of reserved keywords
+    private var currentLine = 1  // Current line lexxing
+    private var tokenStart = 0  // Start of current token
+    private var position = 0  // current position of pointer
+    private var currentChar: Char = input[0]  // Grab the first character to begin
 
     // Setup reserved phrases checker
     init {
@@ -37,7 +37,7 @@ class Lexer(val input: String) {
      * Checks for first match in list of possible reserved phrases
      * If none match, assumes ID and returns ID token
      */
-    fun lookAhead(possiblePhrases: List<Lexeme>): Token {
+    private fun lookAhead(possiblePhrases: List<Lexeme>): Token {
 
         for (lexeme in possiblePhrases) {
             var phrase = reservedPhrases[lexeme]!!  // If lexeme invalid, we want to throw exception
@@ -47,10 +47,10 @@ class Lexer(val input: String) {
                 continue
             }
 
-            var phraseSubstring = input.substring(position, (position + phraseLength + 1))  // Grab substring of same length as requested phrase
+            val phraseSubstring = input.substring(position, (position + phraseLength + 1))  // Grab substring of same length as requested phrase
 
             if (phraseSubstring == phrase) {
-                var token = Token(lexeme = lexeme, value = phrase, line = currentLine, pos = tokenStart)
+                val token = Token(lexeme = lexeme, value = phrase, line = currentLine, pos = tokenStart)
                 tokenStart += phraseLength
                 position += phraseLength
                 getNextChar()
@@ -61,7 +61,7 @@ class Lexer(val input: String) {
         return identifier()
     }
 
-    fun stringLiteral(): Token {
+    private fun stringLiteral(): Token {
         var result = ""
 
         val literalStart = tokenStart
@@ -79,7 +79,7 @@ class Lexer(val input: String) {
         return Token(lexeme = LITERAL_STRING, value = result, pos = literalStart, line = literalLine)
     }
 
-    fun comment(): Token{
+    private fun comment(): Token{
         var endOfComment = false
         while(!endOfComment){
             if(currentChar == '\n' || currentChar == '\u0000'){
@@ -101,7 +101,7 @@ class Lexer(val input: String) {
         return identifier()
     }
 
-    fun number(): Token{
+    private fun number(): Token{
 
         var number: String
         val line = currentLine
@@ -128,7 +128,7 @@ class Lexer(val input: String) {
         return Token(lexeme = LITERAL_INT, value = number, line = line, pos = pos)
     }
 
-    fun identifier(): Token {
+    private fun identifier(): Token {
 
         val line = currentLine
         val pos = tokenStart
@@ -142,7 +142,7 @@ class Lexer(val input: String) {
         return Token(lexeme = ID, value = identifier, line = line, pos = pos)
     }
 
-    fun getToken(): Token {
+    private fun getToken(): Token {
         while (currentChar.isWhitespace()) {
             getNextChar()
         }
@@ -174,7 +174,7 @@ class Lexer(val input: String) {
         return numberOrIdentifier()
     }
 
-    fun getNextChar(): Char {
+    private fun getNextChar(): Char {
         tokenStart++
         position++
 
@@ -193,7 +193,7 @@ class Lexer(val input: String) {
     }
 
     // Print an error and exit process
-    fun error(char: Char, errorPos: Int, line: Int, expectedLexeme: Lexeme) {
+    private fun error(char: Char, errorPos: Int, line: Int, expectedLexeme: Lexeme) {
         println("--- ERROR [LINE: $line, POS: $errorPos] Invalid character $char in expected lexeme $expectedLexeme")
         exitProcess(-1)
     }
