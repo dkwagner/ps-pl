@@ -67,8 +67,8 @@ a cute and totally not gonna ever get old gimmick to draw them in? Enter PoliteS
 ## Syntax Snippet
 Polite script differs from other languages is that it trys to be as verbose (and polite) as 
 possible. And while other languages have a certain verboseness to them, its in a way that 
-is still very terse, and doesn't always read well. In most cases this just hurts the developer
-experience as developers hate writing any more than they have to to do a thing in most cases.
+is still very terse, and doesn't always read well. PoliteScript takes the opposite approach. Lets make the language so verbose that nobody could possibly misunderstand what it is trying to do. In most cases this would just hurts\ the developer
+experience as developers hate writing any more than they have to. However, in this use case, simply by typing the syntax the user is informed exactly what they just did in freindly and plain english.
 
 #### Example
 Lets take look at a simple while loop.
