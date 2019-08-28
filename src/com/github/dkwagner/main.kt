@@ -16,5 +16,4 @@ fun main() {
     }
 
     println("Execution time: $executionTime")
-
 }
