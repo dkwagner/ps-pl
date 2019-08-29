@@ -142,7 +142,7 @@ class Lexer(private val input: String) {
         return Token(lexeme = ID, value = identifier, line = line, pos = pos)
     }
 
-    private fun getToken(): Token {
+    fun getToken(): Token {
         while (currentChar.isWhitespace()) {
             getNextChar()
         }

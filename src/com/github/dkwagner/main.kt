@@ -1,7 +1,6 @@
 package com.github.dkwagner
 
-import com.github.dkwagner.lexer.Lexer
-import java.io.File
+import com.github.dkwagner.parser.Parser
 import kotlin.system.measureTimeMillis
 
 /**
@@ -9,11 +8,9 @@ import kotlin.system.measureTimeMillis
  */
 fun main() {
 
-    val input = File("resources/full_test.ps").readText()
-
     val executionTime = measureTimeMillis {
-        Lexer(input).printTokens()
+        Parser().parseFile("resources/variable_decl.ps")
     }
 
-    println("Execution time: $executionTime")
+    println("\nLexing complete with no errors! Good job. It took approximately $executionTime ms to complete!")
 }
