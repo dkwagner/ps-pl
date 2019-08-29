@@ -12,5 +12,5 @@ fun main() {
         Parser().parseFile("resources/variable_decl.ps")
     }
 
-    println("\nLexing complete with no errors! Good job. It took approximately $executionTime ms to complete!")
+    println("\nLexing and Parsing complete with no errors! Good job. The process took approximately $executionTime ms to complete!")
 }

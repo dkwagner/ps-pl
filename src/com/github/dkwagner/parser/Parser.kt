@@ -4,30 +4,31 @@ import com.github.dkwagner.lexer.Lexeme.*
 import com.github.dkwagner.lexer.Lexer
 import com.github.dkwagner.lexer.Token
 import java.io.File
-import kotlin.system.measureTimeMillis
 
 class Parser {
 
     fun parseFile(filePath: String){
 
         var tokens: List<Token>
-        var variables: List<Token>
+        var variables: Map<String, Token>
         var lexer = Lexer(File(filePath).readText())  // Read file from filepath into lexer
 
-        val executionTime = measureTimeMillis { tokens = getTokens(lexer) }   // Get all tokens
+        tokens = getTokens(lexer)   // Get all tokens
         variables = getVariableDeclarations(tokens)
 
-        variables.forEach { println(it) }
+        variables.forEach { println(it.value) }
 
     }
 
-    fun getVariableDeclarations(tokens: List<Token>): List<Token>{
-        var variables = mutableListOf<Token>()
+    fun getVariableDeclarations(tokens: List<Token>): Map<String, Token>{
+        var variables = mutableMapOf<String, Token>()
 
         tokens.forEachIndexed {index, token ->
             if(token.lexeme == ID){
                 if(index - 1 >= 0 && tokens[index - 1].lexeme == KEYPHRASE_DECLARE){
-                    variables.add(token)
+                    if(!variables.containsKey(token.value)){
+                        variables[token.value] = token
+                    }
                 }
             }
         }

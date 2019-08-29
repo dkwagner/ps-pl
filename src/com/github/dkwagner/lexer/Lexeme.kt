@@ -11,7 +11,7 @@ enum class Lexeme{
     // Keywords
     KEYPHRASE_PLEASE,  // Please (line start)
     KEYPHRASE_ASSIGN,  // equal to (=)
-    KEYPHRASE_DECLARE,  // set (var)
+    KEYPHRASE_DECLARE,  // create (var)
     KEYPHRASE_IF,  // check if (if start)
     KEYPHRASE_LOOP,  // loop  (while)
     KEYPHRASE_END_STATEMENT,  // Thanks
